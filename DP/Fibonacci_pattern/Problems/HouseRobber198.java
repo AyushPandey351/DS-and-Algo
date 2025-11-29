@@ -39,14 +39,14 @@ public class HouseRobber198 {
     }
 
     /**************** Recursive Approch */
+    public int recursive_rob(int[] nums) {
+        return recursive_rob(nums, nums.length - 1);
+    }
+
     public int recursive_rob(int[] nums, int i) {
         if (i < 0)
             return 0;
         return Math.max(recursive_rob(nums, i - 1), nums[i] + recursive_rob(nums, i - 2));
-    }
-
-    public int recursive_rob(int[] nums) {
-        return recursive_rob(nums, nums.length - 1);
     }
 
     /**************** Recursive Approch */
@@ -114,7 +114,7 @@ public class HouseRobber198 {
         System.out.println("Recursive: " + obj.recursive_rob(arr));
         System.out.println("Memoization: " + obj.memoization_rob(arr));
         System.out.println("iterative: " + obj.iterative_rob(arr));
-        System.out.print("Space optimized approach: "+obj.spaceOptimized_rob(arr));
+        System.out.print("Space optimized approach: " + obj.spaceOptimized_rob(arr));
         sc.close();
     }
 }
