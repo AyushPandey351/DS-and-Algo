@@ -5,6 +5,8 @@ array is also given. Whenever the frog jumps from a stair i to stair j, the ener
 in the jump is abs(height[i]- height[j]), where abs() means the absolute difference.
 We need to return the minimum energy that can be used by the frog to jump from stair 0
 to stair N-1..
+
+https://www.geeksforgeeks.org/problems/geek-jump/1
  */
 
 import java.util.*;
@@ -85,6 +87,25 @@ public class FrogJump {
 
     /*****************************/
 
+    int spaceOptimized_frogJump(int[] height)
+    {
+        if(height.length==0 || height.length ==1) return 0;
+        int prev1 = 0;
+        int prev2 = 0;
+        for(int i = 1;i<height.length;i++)
+        {
+            int left = prev1 + Math.abs(height[i]-height[i-1]);
+            int right =  Integer.MAX_VALUE;
+            if(i>1)
+                right = prev2 + Math.abs(height[i]-height[i-2]);
+
+            int  curr = Math.min(left,right);
+            prev2 = prev1;
+            prev1 = curr;
+        }
+        return prev1;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
@@ -96,6 +117,8 @@ public class FrogJump {
         System.out.println("Recursive Approach: " + obj.rec_frogJump(arr));
         System.out.println("Memoization Approach: " + obj.memo_frogJump(arr));
         System.out.println("Tabulation Approach: " + obj.tab_frogJump(arr));
+        System.out.println("Tabulation Approach: " + obj.spaceOptimized_frogJump(arr));
+
 
         sc.close();
     }
