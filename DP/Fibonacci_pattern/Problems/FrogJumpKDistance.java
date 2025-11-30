@@ -40,7 +40,7 @@ import java.util.*;
 public class FrogJumpKDistance {
 
     /**
-     * Recursiev Approach
+     * Recursive Approach
      * 
      * @param jump
      * @param k
